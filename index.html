@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT. Medica Win - Home</title>
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #000000;
+
+        }
+        header {
+            background-color: #40e0d0;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #7FFFD4;
+            padding: 0.5em 0;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1em;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 2em;
+            text-align: justify;
+            font-family: 'Times New Roman'
+        }
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #7FFFD4;
+            color: #fff;
+            position: static;
+            bottom: 0;
+            width: 100%;    
+        }
+        /* Logo Container */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo-img {
+            width: auto;
+            height: 110px;
+        }
+
+        /* Header Text */
+        header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        header p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2em;
+            margin-top: 0.5rem;
+        }
+
+        /* Alternate Version with Side-by-side Layout */
+        .header-content {
+            display: flex;
+            align-items: Justify;
+            justify-content: Justify;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-text {
+            text-align: left;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-img {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .header-text {
+                text-align: center;
+            }
+        }
+
+
+        /* Carousel Styles */
+        .carousel {
+            margin-bottom: 1rem;
+            position: relative;
+            padding: 0 50px;
+        }
+        .carousel-inner {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .carousel-item {
+            height: 400px;
+            background-color: #f8f9fa;
+        }
+        .carousel-item .row {
+            margin: 0;
+            height: 100%;
+        }
+        .card {
+            height: 100%;
+            margin: 0 10px;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        /* Container untuk carousel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* Slide konten */
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ddd;
+            color: #333;
+            font-size: 24px;
+        }
+
+        /* Indikator navigasi */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 15px; /* Jarak dari bawah carousel */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px; /* Jarak antar angka */
+        }
+
+        .carousel-indicators .dot {
+            width: 30px; /* Lebar area angka */
+            height: 30px; /* Tinggi area angka */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.7); /* Warna default angka */
+            background-color: rgba(0, 0, 0, 0.5); /* Background untuk angka */
+            border-radius: 50%; /* Membuatnya berbentuk lingkaran */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .carousel-indicators .dot.active {
+            color: rgba(255, 255, 255, 1); /* Warna untuk angka aktif */
+            background-color: rgba(0, 0, 0, 0.8); /* Warna background angka aktif */
+            transform: scale(1.2); /* Perbesar angka aktif */
+        }
+        /* Styling untuk tombol next dan previous */
+        .carousel-control-prev,
+        .carousel-control-next {
+            background-color: #40e0d0;
+            border-radius: 50%;
+            height: 40px;
+            opacity: 1;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+        }
+
+        .carousel-control-prev {
+        left: 0;  /* Posisi dari kiri */
+        }
+
+        .carousel-control-next {
+        right: 0;  /* Posisi dari kanan */
+        }
+        /* Styling untuk bagian Contact */
+        .contact-section {
+            background-image: url('your-background-image.jpg'); /* Path gambar */
+            background-size: cover; /* Menutupi seluruh area */
+            background-position: center; /* Memposisikan gambar di tengah */
+            background-repeat: no-repeat; /* Tidak mengulang gambar */
+            padding: 50px 20px; /* Jarak dalam elemen */
+            color: white; /* Warna teks untuk kontras */
+            text-align: center; /* Posisi teks di tengah */
+        }
+
+        /* Jika tidak menggunakan gambar, gunakan warna saja */
+        .contact-section {
+            background-color: #2c3e50; /* Warna solid */
+            color: white; /* Teks kontras */
+        }
+        
+
+
+        
+
+
+    </style>
+</head>
+<body>
+    <header style="margin-top: 20px;">
+        <div class="container">
+            <div class="header-content">
+                <img src="Logo Baru.png" alt="PT. Medica Win Logo" class="logo-img">
+                <div class="header-text">
+                    <h1>PT. Medica Win</h1>
+                    <p>Your trusted partner in pharmaceuticals and medical equipment</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <a href="#about">About Us</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>PT Medica Win was established in 1993 by Mr. Kevin Raynaldi and Wijdan Fathurahman with a vision focused on providing high-quality medicines for the people of Indonesia. Initially starting from a small pharmacy in the city of Palembang, this company gradually developed into an integrated pharmaceutical industry and became the vanguard, especially for the people of South Sumatra. The first decade in 1993-2003, this company focused first on the distribution of generic drugs and built strong distribution relationships in various major cities in Indonesia. Then gradually began to build small production facilities for generic drugs.</p>
+            <p>The second decade in 2004-2013 the company began to produce its own branded medicines to factory expansion and increase production capacity. The company also applies good manufacturing practices (GMP) standards to ensure product quality so that the public trusts the quality of our products, and continues to develop research for new products that are certainly needed by the public for now and in the future. The third decade in 2014-2023 the company has launched innovative products resulting from its own research and development to expand the market to ASEAN countries, also received various awards and certifications for product quality and company management. Investing in the development of the latest digital technology to improve operational efficiency and customer service so as not to be outdated. Establishing strategic cooperation with various research institutions and universities to be active and participate in activities in the health sector such as Corporate Social Responsibility.</p>
+            <p>Medica Win Company has now become one of the leading pharmaceutical companies in Indonesia with a diverse product portfolio, ranging from generic drugs to innovative drugs. The company will continue to be committed to continuing to innovate and provide the best health products and services for the Indonesian and regional communities. With 30 years of experience, PT Mediaca Win is ready to face future challenges and continue to contribute to public health by utilizing existing opportunities and strengths.</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            <p>PT Medica Win telah berdiri sejak tahun 1993 oleh bapak Kevin Raynaldi dan Wijdan Fathurahman dengan visi berfokus untuk menyediakaan obat obatan yang berkualitas tinggi bagi masyarakat Indonesia. Dahulu berawal dari sebuah apotek kecil di kota Palembang, perusahaan ini secara bertahap berkembang menjadi industry farmasi yang terintegrasi dan menjadi garda terdepan khususnya bagi warga Sumatera Selatan.  Dekade pertama pada tahun 1993-2003, Perusahaan ini berfokus terlebih dahulu pada distribusi obat obat generic serta membangun relasi distribusi yang kuat diberbagai kota besar di Indonesia. Kemudian secara bertahap mulai membangun fasilitas produksi kecil untuk obat obatan generic.</p>
+            <p>Dekade kedua pada tahun 2004-2013 perusahaan mulai memproduksi obat obatan bermerek sendiri hingga ekspansi pabrik dan meningkatan kapasitas produksi. Perusahaan juga menerapkan standar good manufacturing practices (GMP) untuk menjamin kualitas produk agar Masyarakat percaya dengan kualitas produk kami, serta terus melakukan pengembangan riset untuk produk produk baru yang tentunya dibutuhkan Masyarakat untuk saat ini dan yang akan datang. Dekade ketiga pada tahun 2014-2023 perusahaan telah meluncurkan produk produk inovatif hasil dari pengembangan riset dan pengembangan sendiri hingga memperluas pasar ke negara negara ASEAN, juga mendapatkan berbagai penghargaan dan sertifikasi atas kualitas produk dan manajemen perusahaan. Berinvestasi dalam pengembangan teknologi digital yang terbaru untuk meningkatkan efisiensi operasional dan layanan pelanggan agar tidak ketinggalan jaman. Menjalin Kerjasama yang strategis dengan berbagai Lembaga riset dan universitas untuk aktif dan andil dalam kegiatan kegiatan di bidang kesehatan seperti Corporate Social Responsibility.</p>
+            <p>Perusahaan Medica Win saat ini telah menjadi salah satu Perusahaan farmasi yang terkemuka di Indonesia dengan portofolio produk yang beragam, mulai dari obat generic hingga obat obat yang inovatif. Perusahaan akan terus berkomitmen untuk terus berinovasi dan menyediakan produk dan layanan kesehatan terbaik bagi Masyarakat Indonesia dan regional. Dengan pengalaman 30 tahun, PT Mediaca Win siap menghadapi tantangan masa depan dan terus berkontribusi untuk kesehatan Masyarakat dengan memanfaatkan peluang serta kekuatan yang ada.</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            <p>تأسست شركة PT Medica Win في عام 1993 على يد السيد كيفين رينالدي ووجدان فتح الرحمن برؤية تركز على توفير أدوية عالية الجودة للشعب الإندونيسي. بدأت هذه الشركة سابقًا من صيدلية صغيرة في مدينة باليمبانج، وتطورت تدريجيًا إلى صناعة دوائية متكاملة وأصبحت الحرس الأمامي، خاصة لسكان جنوب سومطرة. في العقد الأول، في الفترة 1993-2003، ركزت هذه الشركة أولاً على توزيع الأدوية الجنيسة وبناء علاقات توزيع قوية في مختلف المدن الكبرى في إندونيسيا. ثم بدأت تدريجيا في بناء مرافق إنتاج صغيرة للأدوية الجنيسة.</p>
+            <p>وفي العقد الثاني، في الفترة 2004-2013، بدأت الشركة في إنتاج الأدوية ذات العلامات التجارية الخاصة بها، وتوسيع المصنع وزيادة الطاقة الإنتاجية. تطبق الشركة أيضًا معايير ممارسات التصنيع الجيدة (GMP) لضمان جودة المنتج حتى يثق الجمهور في جودة منتجاتنا، وتستمر في إجراء تطوير الأبحاث للمنتجات الجديدة التي سيحتاجها الجمهور بالتأكيد الآن وفي المستقبل. . وفي العقد الثالث، في 2014-2023، أطلقت الشركة منتجات مبتكرة نتيجة للبحث والتطوير الخاص بها ووسعت السوق إلى دول الآسيان، وحصلت أيضًا على العديد من الجوائز والشهادات لجودة المنتج وإدارة الشركة. الاستثمار في تطوير أحدث التقنيات الرقمية لتحسين الكفاءة التشغيلية وخدمة العملاء حتى لا تصبح قديمة. إقامة تعاون استراتيجي مع مختلف المؤسسات البحثية والجامعات لتكون نشطة وتشارك في الأنشطة في القطاع الصحي مثل المسؤولية الاجتماعية للشركات.</p>
+            <p>أصبحت شركة Medica Win الآن واحدة من شركات الأدوية الرائدة في إندونيسيا مع مجموعة منتجات متنوعة، تتراوح من الأدوية العامة إلى الأدوية المبتكرة. وستواصل الشركة التزامها بمواصلة الابتكار وتقديم أفضل المنتجات والخدمات الصحية لشعب إندونيسيا والمنطقة. بفضل 30 عامًا من الخبرة، فإن PT Mediaca Win مستعدة لمواجهة التحديات المستقبلية ومواصلة المساهمة في الصحة العامة من خلال الاستفادة من الفرص ونقاط القوة الحالية.</p>
+        </section>
+        <section class="container my-5">
+            <h2 class="text-center mb-4">Katalog Produk</h2>
+            <!-- Carousel Controls -->
+            <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            </div>
+            <h4>Produk Obat</h4>
+            
+            <div id="productCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <div class="carousel-indicators">
+                    <button type="button" data-target="#productCarousel" data-slide-to="0" class="active"></button>
+                    <button type="button" data-target="#productCarousel" data-slide-to="1"></button>
+                    <button type="button" data-target="#productCarousel" data-slide-to="2"></button>
+                    <button type="button" data-target="#productCarousel" data-slide-to="3"></button>
+                    <button type="button" data-target="#productCarousel" data-slide-to="4"></button>
+                    <button type="button" data-target="#productCarousel" data-slide-to="5"></button>
+                    <button type="button" data-target="#productCarousel" data-slide-to="6"></button>
+                    <button type="button" data-target="#productCarousel" data-slide-to="7"></button>
+                    <button type="button" data-target="#productCarousel" data-slide-to="8"></button>
+                    <button type="button" data-target="#productCarousel" data-slide-to="9"></button>
+                </div>
+
+                <!-- Carousel Items -->
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Alupurinol 100 mg.jpg" class="card-img-top" alt="Alupurinol">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Alupurinol 100 mg</h5>
+                                        <p class="card-text">Tablet Alupurinol 100 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Alupurinol 300 mg.jpg" class="card-img-top" alt="Alupurinol">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Alupurinol 300 mg</h5>
+                                        <p class="card-text">Tablet Alupurinol 300 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Aspirin 100 mg.jpg" class="card-img-top" alt="Aspirin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Aspirin 100 mg</h5>
+                                        <p class="card-text">Tablet Aspirin 100 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Captopril 25 mg.jpg" class="card-img-top" alt="Captopril">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Captopril 25 mg</h5>
+                                        <p class="card-text">Tablet Captopril 25 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="CiproVin.jpg" class="card-img-top" alt="CiproVin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">CiproVin</h5>
+                                        <p class="card-text">Tablet CiproVin</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Cpn Cetrizine.jpg" class="card-img-top" alt="Cpn Cetrizine">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Cpn Cetrizine</h5>
+                                        <p class="card-text">Sirup Cpn Cetrizine</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Diazepam 10 mg.jpg" class="card-img-top" alt="Diazepam">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Diazepam 10 mg</h5>
+                                        <p class="card-text">Tablet Diazepam 10 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Diazolin.jpg" class="card-img-top" alt="Diazolin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Diazolin</h5>
+                                        <p class="card-text">Injeksi Intravena Diazolin</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Furosemide 20 mg.jpg" class="card-img-top" alt="Furosemide">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Furosemide 20 mg</h5>
+                                        <p class="card-text">Tablet Furosemide 20 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Furosemide 40 mg.jpg" class="card-img-top" alt="Furosemide">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Furosemide 40 mg</h5>
+                                        <p class="card-text">Tablet Furosemide 40 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Lisinol 5 mg.jpg" class="card-img-top" alt="Lisinol">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lisinol 5 mg</h5>
+                                        <p class="card-text">Lisinol 5 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Lisinol 10 mg.jpg" class="card-img-top" alt="Lisinol">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lisinol 10 mg</h5>
+                                        <p class="card-text">Tablet Lisinol 10 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Losartan 50 mg.jpg" class="card-img-top" alt="Losartan">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Losartan 50 mg</h5>
+                                        <p class="card-text">Tablet Losartan Potassium 50 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Metronidazole 250 mg.jpg" class="card-img-top" alt="Metronidazole">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Metronidazole 250 mg</h5>
+                                        <p class="card-text">Tablet Metronidazole 250 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Metronidazole 500 mg.jpg" class="card-img-top" alt="Metronidazole">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Metronidazole 500 mg</h5>
+                                        <p class="card-text">Tablet Metronidazole 500 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Natrium Diklofenak 25 mg.jpg" class="card-img-top" alt="Na Diklofenak">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Na Diklofenak 25 mg</h5>
+                                        <p class="card-text">Tablet Na Diklofenak 25 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Natrium Diklofenak 50 mg.jpg" class="card-img-top" alt="Na Diklofenak">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Na Diklofenak 50 mg</h5>
+                                        <p class="card-text">Tablet Na Diklofenak 50 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Normix 5 mg.jpg" class="card-img-top" alt="Normix 5">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Normix 5 mg</h5>
+                                        <p class="card-text">Tablet Amlodipine 5 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Normix 10 mg.jpg" class="card-img-top" alt="Normix 10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Normix 10 mg</h5>
+                                        <p class="card-text">Tablet  Amlodipine 10mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Omeprazole 10 mg.jpg" class="card-img-top" alt="Omeprazole">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Omeprazole 10 mg</h5>
+                                        <p class="card-text">Tablet Omeprazole 10 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Omeprazole 20 mg.jpg" class="card-img-top" alt="Omeprazole">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Omeprazole 20 mg</h5>
+                                        <p class="card-text">Tablet Omeprazole 20 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Prenisone 5 mg.jpg" class="card-img-top" alt="Prenisone">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Prenisone 5 mg</h5>
+                                        <p class="card-text">Tablet Prednisone 5 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Reduklir.jpg" class="card-img-top" alt="Reduklir">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Reduklir</h5>
+                                        <p class="card-text">Tetes mata Tetrahidrozolin HCl 0,5%</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Reliefmax 200 mg.jpg" class="card-img-top" alt="Reliefmax 200">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Reliefmax 200 mg</h5>
+                                        <p class="card-text">Tablet Ibuprofen 200 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 7 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Reliefmax 400 mg.jpg" class="card-img-top" alt="Reliefmax 400">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Reliefmax 400 mg</h5>
+                                        <p class="card-text">Tablet Ibuprofen 400 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Sartonin 50 mg.jpg" class="card-img-top" alt="Sartonin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sartonin 50 mg</h5>
+                                        <p class="card-text">Tablet Losartan Potassium 50 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Sartonin 100 mg.jpg" class="card-img-top" alt="Sartonin 10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sartonin 100 mg</h5>
+                                        <p class="card-text">Tablet Losartan Potassium 100 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Simvastatin 10 mg.jpg" class="card-img-top" alt="Simvastatin 10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Simvastatin 10 mg</h5>
+                                        <p class="card-text">Tablet Simvastatin 10 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 8 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Dexamethasone 0,5 mg.jpg" class="card-img-top" alt="Dexamethasone">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Dexamethasone O,5 mg</h5>
+                                        <p class="card-text">Tablet Dexamethasone 0,5 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Dexamethasone 2 mg.jpg" class="card-img-top" alt="Dexamethasone">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Dexamethasone 2 mg</h5>
+                                        <p class="card-text">Tablet Dexamethasone 2 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Gabapentin 100 mg.jpg" class="card-img-top" alt="Gabapentin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Gabapentin 100 mg</h5>
+                                        <p class="card-text">Tablet Gabapentin 100 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Gabapentin 400 mg.jpg" class="card-img-top" alt="Gabapentin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Gabapentin 400 mg</h5>
+                                        <p class="card-text">Tablet Gabapentin 400 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 9 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Risperidone 2 mg.jpg" class="card-img-top" alt="Risperidone">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Risperidone 2 mg</h5>
+                                        <p class="card-text">Tablet Risperidone 2 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Risperidone 3 mg.jpg" class="card-img-top" alt="Risperidone">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Risperidone 3 mg</h5>
+                                        <p class="card-text">Tablet Risperidone 3 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Simvastatin 20 mg.jpg" class="card-img-top" alt="Simvastatin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Simvastatin 20 mg</h5>
+                                        <p class="card-text">Tablet Simvastatin 20 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Tramadol 100 mg.jpg" class="card-img-top" alt="Tramadol">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Tramadol 100 mg</h5>
+                                        <p class="card-text">Tablet Tramadol 100 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 10 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Atorvastatin 10 mg.jpg" class="card-img-top" alt="Atorvastatin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Atorvastatin 10 mg</h5>
+                                        <p class="card-text">Tablet Atorvastatin 10 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Atorvastatin 20 mg.jpg" class="card-img-top" alt="Atorvastatin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Atorvastatin 20 mg</h5>
+                                        <p class="card-text">Tablet Atorvastatin 20 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Atorvastatin 40 mg.jpg" class="card-img-top" alt="Atorvastatin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Atorvastatin 40 mg</h5>
+                                        <p class="card-text">Tablet Atorvastatin 40 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Bisoprolol 5 mg.jpg" class="card-img-top" alt="Bisoprolol">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Bisoprolol 5 mg</h5>
+                                        <p class="card-text">Tablet Bisoprolol 5 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 11 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Spirotone 25 mg.jpg" class="card-img-top" alt="Spirotone">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Spirotone 25 mg</h5>
+                                        <p class="card-text">Tablet Spirotone 25 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Spirotone 100 mg.jpg" class="card-img-top" alt="Spirotone">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Spirotone 100 mg</h5>
+                                        <p class="card-text">Tablet Spirotone 100 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Valsartan 80 mg.jpg" class="card-img-top" alt="Valsartan">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Valsartan 80 mg</h5>
+                                        <p class="card-text">Tablet Salut Valsartan 80 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Vascorin 2.5 mg.jpg" class="card-img-top" alt="Vascorin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ramipril 2.5 mg</h5>
+                                        <p class="card-text">Tablet Ramipril 2.5 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 12 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Spirotone 25 mg.jpg" class="card-img-top" alt="Spirotone">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Spirotone 25 mg</h5>
+                                        <p class="card-text">Tablet Spirotone 25 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Vascorin 5 mg.jpg" class="card-img-top" alt="Vascorin">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Vascorin 5 mg</h5>
+                                        <p class="card-text">Tablet Vascorin 5 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="Painex .jpg" class="card-img-top" alt="Painex">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PAINEX</h5>
+                                        <p class="card-text">Tablet Paracetamol 500 mg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <video src="Pagastrol Forte.mp4" class="card-img-top" alt="Pagastrol">
+                                    <div class="card-body">
+                                        <h5 class="card-title">PAGASTROL FORTE</h5>
+                                        <p class="card-text">Pusing dengan masalah lambung? Pagasery Forte solusinya! Dengan bahan alami 100% dan formula khusus spesialis maag, Pagasery Forte bekerja ampuh dan mujarab tanpa efek samping.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+                
+        </section>
+        <section id="contact" class="contact-section" style="background-color: #2c3e50; color: white; padding: 50px 20px;">
+            <h2>Contact Us</h2>
+            <p>Address: Jl. Indralaya  I, Dusun. Kebun agung, Kec. Indralaya utara, Kab. Ogan Komering Ulu-Sumatera Selatan.</p>
+            <p>Email: support@medicawin.com</p>
+            <p>Phone: (0351)-77765</p>
+            <p>Fax: (0351)-77765</p>
+        </section>
+    </main>
+    <footer>
+        &copy; 2024 PT. Medica Win. All rights reserved.
+    </footer>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
